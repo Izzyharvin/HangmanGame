@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    background: url("https://occ-0-990-987.1.nflxso.net/dnm/api/v5/rendition/8e167858e96558328f8ee56178face53f4345520/AAAABX0z2e3MXBKRL6JHrkpSp_Vj8yHJ_6wlxzAvqslNpcnz2TEugUZA9qrnf_m95cMXzi3aLbdZcQPPd5ZwnoURUBmosF9tD2xSoEXMEDKWnmDMnWu_0w9-Zi05ETQzFLPsPOeNQQp6Bhrpb9whFzI8AN85C3e8-DUBro0.png") no-repeat;
+}
+.column {
+    float: left;
+    width: 50%;
+}  
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+h1 {
+    text-align: center;
+}
+/*Desktop*/
+@media only screen and (max-width: 980px) {
+    .wrapper {
+      width:100%;
+    }
+}
+/*Tablet*/
+@media only screen and (max-width: 768px) {
+    .wrapper {
+      width:100%;
+    }
+}
+/*Phone*/
+@media only screen and (max-width: 640px) {
+    .wrapper {
+      width:100%;
+    }
+}

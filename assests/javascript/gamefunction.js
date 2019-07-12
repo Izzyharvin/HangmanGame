@@ -15,6 +15,8 @@ var wordLetter = [];
 var word;
 //When the guesses hit 0 from the const chances of 10
 var guesses = 0;
+//How man times you win the game
+var win = 0;
 
 //Function on what to do in the game
 // This function takes a letter and finds all possiability.
@@ -37,6 +39,18 @@ function evaluateGuess(letter) {
     }
 };
 
+//Making the guesses
+// Makes a guess
+function makeGuess(letter) {
+    if (remainingGuesses > 0) {
+        // Make sure we didn't use this letter yet
+        if (lettersGuessed.indexOf(letter) === -1) {
+            lettersGuessed.push(letter);
+            evaluateGuess(letter);
+        }
+    }
+};
+
 //Wins or Lose function
 //
 function winOrLose () {
@@ -46,7 +60,6 @@ function winOrLose () {
     }
     else () {
         console.log(you lose!)
-        lose++
     }
 };
 
