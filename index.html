@@ -14,23 +14,43 @@
     <div class="row">
         <div class="column" style="background-color:#aaa;">
             <h2>Hangman Picture</h2>
-            <img id="youwin" src="" alt="You Win">
-            <img id="youlose" src="" alt="You Lose">
+            <img id="youwin" src="./assests/images/angry-you-win-this-time!.jpg" alt="You Win">
+            <img id="youlose" src="./assests/images/you lose.jpg" alt="You Lose">
             <button id = "tryagain">Try Again</button>
         </div>
-        <div class="column" style="background-color:#bbb;">
+        <div class="column" style="background-color:#aaa;">
             <h2>Press A-Z to Make A Guess</h2>
             <h2>Wins</h2>
-            <h3 id= "wins"></h3>
+            <p id="win"></p>
+            <script>
+                document.getElementById("win").innerHTML;
+            </script>
+            <h2>Losses</h2>
+            <p id="losses"></p>
+            <script>
+                document.getElementById("losses").innerHTML;
+            </script>
             <h2>Current Word</h2>
-            <h3 id= "word"></h3>
+            <p id="word"></p>
+            <script>
+                document.getElementById("word").innerHTML;
+            </script>
             <h2>Guesses Remaining</h2>
-            <h3 id= "guesses"></h3>
+            <p id="guesses"></p>
+            <script>
+                document.getElementById("guesses").innerHTML;
+            </script>
             <h2>Letters Guessed</h2>
-            <h3 id= "lettersGuessed"></h3>
+            <p id="lettersGuessed"></p>
+            <script>
+                document.getElementById("lettersGuessed").innerHTML;
+            </script>
         </div>
     </div>
-    <script src="./assests/javascript/gamefunction.js"></script>
+    <script>
+        check();
+    </script>
+    <script src="assests/javascript/gamefunction.js" type="text/javascript"></script>
 </body>
 
 </html>

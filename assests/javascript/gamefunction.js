@@ -5,7 +5,7 @@ var wordsAvaliable = ["Batman", "Superman", "Flash", "Robin", "Spiderman", "Thor
 //Variables for the game to function
 //This const variable defines a constant reference to a value, we cannot change constant values.
 //But you can change the properties of constant objects inside the const variable.
-const chances = 10;
+var chances = 10;
 //Global variables
 //The letters user guess wrong are put in the brackets
 var lettersGuessed = [];
@@ -17,59 +17,71 @@ var word;
 var guesses = 0;
 //How man times you win the game
 var win = 0;
-
-//Function on what to do in the game
-// This function takes a letter and finds all possiability.
-function evaluateGuess(letter) {
-    // Store positions of letters
-    var positions = [];
-    //This is a for loop: the variable i will be set to 0 (empty slots for the words) using the word that is being
-    //guessed inside the parentheses for wordsAvaliable in the array and .length is the length of an object.
-    for (var i = 0; i < wordsAvaliable[word].length; i++) {
-        //Using the if/else statement so when the word that is being guessed if you guessed the letter (i) in the
-        //wordsAvaliable it will push that letter in the empty spot, also the === means it has to be the same.
-        if (wordsAvaliable[word][i] === letter) {
-            positions.push(i);
+var losses =0
+var userGuess =""
+var underScores
+var wrongLetters =[]
+const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+function reset() {
+    chances = 10
+    lettersGuessed = []
+    wrongLetters=[]
+    word = []
+    underScores=[]
+    word = wordsAvaliable[Math.floor(Math.random()*wordsAvaliable.length)].toLowerCase().split("")
+    for (let i = 0; i < word.length; i++) {
+        underScores.push("_")    
+    }
+    if(word.includes(" ")){
+        underScores[word.indexOf(" ")] = " "
+    }
+    console.log(word, underScores)
+}
+reset()
+document.onkeyup = function(event){
+    console.log(event.key)
+    userGuess = event.key
+    if (alphabet.includes(userGuess)){
+        if(!wordLetter.includes(userGuess)){
+            console.log("first time used")
+            wordLetter.push(userGuess)
+            check()
         }
-        //if there is no letter remove a guess
-        else (positions.length <= 0) {
-            //Guesses-- is the same as i-- minusing the number of guesses each time you type the wrong letter
-            guesses--;
+        else{
+            alert("choose another letter")
         }
     }
-};
-
-//Making the guesses
-// Makes a guess
-function makeGuess(letter) {
-    if (remainingGuesses > 0) {
-        // Make sure we didn't use this letter yet
-        if (lettersGuessed.indexOf(letter) === -1) {
-            lettersGuessed.push(letter);
-            evaluateGuess(letter);
+    else{
+        alert("you must guess a letter")
+    }
+}
+function check(){
+    var location =[]
+    if(word.includes(userGuess)){
+        for (let i = 0; i < word.length; i++) {
+            if (word[i]===userGuess){
+                location.push(i)
+            }   
+        }
+        for (let j = 0; j < location.length; j++) {
+            underScores[location[j]]=userGuess
+            
+        }
+        console.log(underScores)
+        if (!underScores.includes("_")){
+            console.log("you won!!!!!!")
+            win++
+            reset()
         }
     }
-};
-
-//Wins or Lose function
-//
-function winOrLose () {
-    if (wordLetter.indexOf('_') === 0) {
-        console.log(you win!)
-        wins++
+    else{
+        wrongLetters.push(userGuess)
+        chances--
+        console.log(chances, wrongLetters)
+        if(chances===0){
+            losses--
+            reset()
+        }
     }
-    else () {
-        console.log(you lose!)
-    }
-};
+}
 
-//Guesses
-
-
-//Tries
-
-
-//Letters that are already guessed
-
-
-//Reset Game
