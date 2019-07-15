@@ -4,7 +4,7 @@ var wordsAvaliable = ["Batman", "Superman", "Flash", "Robin", "Spiderman", "Thor
 //Variables for the game to function
 //This const variable defines a constant reference to a value, we cannot change constant values.
 //But you can change the properties of constant objects inside the const variable.
-var chances = 10;
+var chances = 11;
 //Global variables
 //The letters user guess wrong are put in the brackets
 var lettersGuessed = [];
@@ -29,7 +29,7 @@ const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p
 //This is a reset function when the game start and when the game ends
 function reset() {
     //Putting variables in the reset function
-    chances = 10
+    chances = 11
     lettersGuessed = []
     wrongLetters=[]
     word = []
@@ -53,6 +53,10 @@ function reset() {
         underScores[word.indexOf(" ")] = " "
     }
     console.log(word, underScores)
+    // Hide game over and win images/text
+    document.getElementById("tryagain").style.cssText = "display: none";
+    document.getElementById("youlose").style.cssText = "display: none";
+    document.getElementById("youwin").style.cssText = "display: none";
 }
 reset()
 //The .onkeyup happens when a key is pressed equal to the function called event
@@ -79,6 +83,9 @@ document.onkeyup = function(event){
     else{
         alert("you must guess a letter")
     }
+    document.getElementById("win").innerText = win;
+    document.getElementById("losses").innerText = losses;
+    document.getElementById("word").innerText = "_";
 }
 //This is a function made for check
 function check(){
@@ -105,6 +112,9 @@ function check(){
         //This a if statement if all the underscores are filled the you when and it goes back to the reset settings.
         if (!underScores.includes("_")){
             console.log("you won!!!!!!")
+            //Shows that you win and to try again picture and button
+            document.getElementById("youwin").style.cssText = "display: block";
+            document.getElementById("tryagain").style.cssText = "display: block";
             win++
             reset()
         }
@@ -118,9 +128,15 @@ function check(){
         console.log(chances, wrongLetters)
         //This is a if statement and if chances go to 0 you lose then the game resets
         if(chances===0){
+            //Shows that you lose and to try again picture and button
+            document.getElementById("youlose").style.cssText = "display: block";
+            document.getElementById("tryagain").style.cssText = "display:block";
             losses++
             reset()
         }
     }
+    document.getElementById("word").innerText = word;
+    document.getElementById("guesses").innerText = chances;
+    document.getElementById("lettersGuessed").innerText = wrongLetters;
 }
 
