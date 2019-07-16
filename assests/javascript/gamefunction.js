@@ -4,10 +4,10 @@ var wordsAvaliable = ["Batman", "Superman", "Flash", "Robin", "Spiderman", "Thor
 //Variables for the game to function
 //This const variable defines a constant reference to a value, we cannot change constant values.
 //But you can change the properties of constant objects inside the const variable.
-var chances = 11;
+var chances = 10;
 //Global variables
 //The letters user guess wrong are put in the brackets
-var lettersGuessed = [];
+// var lettersGuessed = [];
 //The letters that are correct for the word being guessed
 var wordLetter = [];
 //The word that is being guessed
@@ -29,11 +29,12 @@ const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p
 //This is a reset function when the game start and when the game ends
 function reset() {
     //Putting variables in the reset function
-    chances = 11
-    lettersGuessed = []
+    chances = 10
+    // lettersGuessed = []
     wrongLetters=[]
     word = []
     underScores=[]
+    wordLetter = [];
     //The math.floor is a function that returns the largest integer less than or equal to a given number and having
     //Math.random inside the parantheses randomize the wordsAvaliable and adding .length gets the whole word instead
     //of just one letter. The .toLowerCase is a method that returns the calling string value converted to lower case.
@@ -54,9 +55,9 @@ function reset() {
     }
     console.log(word, underScores)
     // Hide game over and win images/text
-    document.getElementById("tryagain").style.cssText = "display: none";
-    document.getElementById("youlose").style.cssText = "display: none";
-    document.getElementById("youwin").style.cssText = "display: none";
+    document.getElementById("tryagain").style.cssText = "display: none;";
+    document.getElementById("youlose").style.cssText = "display: none;";
+    document.getElementById("youwin").style.cssText = "display: none;";
 }
 reset()
 //The .onkeyup happens when a key is pressed equal to the function called event
@@ -85,7 +86,7 @@ document.onkeyup = function(event){
     }
     document.getElementById("win").innerText = win;
     document.getElementById("losses").innerText = losses;
-    document.getElementById("word").innerText = "_";
+    document.getElementById("word").innerText = underScores.join("");
 }
 //This is a function made for check
 function check(){
@@ -100,6 +101,7 @@ function check(){
             //same and if it is true .push the variable location which is it's spot.
             if (word[i]===userGuess){
                 location.push(i)
+                document.getElementById("word").innerText = underScores.join("");
             }   
         }
         //This is a for loop, the let statement declares a block scope local variable. Since we already use i we
@@ -113,8 +115,8 @@ function check(){
         if (!underScores.includes("_")){
             console.log("you won!!!!!!")
             //Shows that you win and to try again picture and button
-            document.getElementById("youwin").style.cssText = "display: block";
-            document.getElementById("tryagain").style.cssText = "display: block";
+            document.getElementById("youwin").style.cssText = "display: inline";
+            document.getElementById("tryagain").style.cssText = "display: inline";
             win++
             reset()
         }
@@ -129,14 +131,15 @@ function check(){
         //This is a if statement and if chances go to 0 you lose then the game resets
         if(chances===0){
             //Shows that you lose and to try again picture and button
-            document.getElementById("youlose").style.cssText = "display: block";
-            document.getElementById("tryagain").style.cssText = "display:block";
+            document.getElementById("youlose").style.cssText = "display: inline";
+            document.getElementById("tryagain").style.cssText = "display: inline";
             losses++
             reset()
         }
     }
-    document.getElementById("word").innerText = word;
+    document.getElementById("word").innerText = underScores.join("");
     document.getElementById("guesses").innerText = chances;
     document.getElementById("lettersGuessed").innerText = wrongLetters;
 }
+
 
