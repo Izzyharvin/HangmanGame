@@ -55,9 +55,14 @@ function reset() {
     }
     console.log(word, underScores)
     // Hide game over and win images/text
-    document.getElementById("tryagain").style.cssText = "display: none;";
-    document.getElementById("youlose").style.cssText = "display: none;";
-    document.getElementById("youwin").style.cssText = "display: none;";
+
+    document.getElementById("youlose").style.display = "none";
+    document.getElementById("youwin").style.display = "none";
+    console.log(underScores)
+    //Reset previous game word guesses remaining and letters guessed
+    document.getElementById("word").innerText = underScores.join("");
+    document.getElementById("guesses").innertext = chances;
+    document.getElementById("lettersGuessed").innertext = wrongLetters;
 }
 reset()
 //The .onkeyup happens when a key is pressed equal to the function called event
@@ -115,10 +120,11 @@ function check(){
         if (!underScores.includes("_")){
             console.log("you won!!!!!!")
             //Shows that you win and to try again picture and button
-            document.getElementById("youwin").style.cssText = "display: inline";
-            document.getElementById("tryagain").style.cssText = "display: inline";
+            if (document.getElementById("youwin").style.display = "none"){
+                document.getElementById("youwin").style.display = "inline"
+            }
             win++
-            reset()
+            setTimeout(reset, 5000)
         }
     }
     //This is the else statement from the if is not true
@@ -131,10 +137,11 @@ function check(){
         //This is a if statement and if chances go to 0 you lose then the game resets
         if(chances===0){
             //Shows that you lose and to try again picture and button
-            document.getElementById("youlose").style.cssText = "display: inline";
-            document.getElementById("tryagain").style.cssText = "display: inline";
+            if (document.getElementById("youlose").style.display = "none"){
+                document.getElementById("youlose").style.display = "inline"
+            }
             losses++
-            reset()
+            setTimeout(reset, 5000)
         }
     }
     document.getElementById("word").innerText = underScores.join("");

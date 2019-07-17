@@ -31,6 +31,12 @@ h2 {
 html {
     font-family: 'Press Start 2P', cursive;
 }
+#youwin {
+    display: none;
+}
+#youlose {
+    display: none;
+}
 /*Desktop*/
 @media only screen and (max-width: 980px) {
     .wrapper {
